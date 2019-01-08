@@ -3,10 +3,13 @@ package spring.video.tutorial.impls.robot;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import spring.video.tutorial.interfaces.*;
 
-public class ModelT1000 extends Model implements Robot,InitializingBean,DisposableBean {
-
+public class ModelT1000 extends Model implements InitializingBean,DisposableBean {
+	@Autowired(required = false)
+	@Qualifier("toshibaHand")
 	private Hand hand;
 	private Leg leg;
 	private Head head;
@@ -104,10 +107,15 @@ public class ModelT1000 extends Model implements Robot,InitializingBean,Disposab
 
 
 	@Override
-	public void fire() {
-		head.calc();
-		hand.catchSomething();
-		leg.go();
+	public void action() {
+		try{
+			head.calc();
+			hand.catchSomething();
+			leg.go();
+		}catch (Exception e){
+			System.out.println(colour + " " + year + " " + soundEnabled );
+		}
+
 	}
 
 

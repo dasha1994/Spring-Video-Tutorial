@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="t1000_context.xml"/>
+
+    <bean id="t1000pool" class="spring.video.tutorial.impls.pool.T1000Pool" autowire="constructor">
+    </bean>
+
+    <util:list id="robotCollection" value-type="spring.video.tutorial.interfaces.Robot">
+        <ref bean="t1000"></ref>
+    </util:list>
+</beans>

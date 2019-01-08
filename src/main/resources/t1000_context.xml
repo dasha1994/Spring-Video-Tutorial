@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+default-lazy-init="true">
+
+    <import resource="sony.context.xml"/>
+    <import resource="toshiba.context.xml"/>
+
+    <bean id="t1000" class="spring.video.tutorial.impls.robot.ModelT1000"
+          parent="baseModel"
+          scope="prototype"
+          autowire="byType"
+
+          init-method="init"
+          destroy-method="destroy"
+          depends-on="db">
+    </bean>
+
+    <bean id="db" class="spring.video.tutorial.impls.database.Database" lazy-init="true"/>
+
+    <bean id="baseModel" abstract="true">
+        <constructor-arg value="silver"/>
+        <constructor-arg value="1989"/>
+        <constructor-arg value="true"/>
+    </bean>
+    <!--p:hand-ref="sonyHand"-->
+    <!--p:head-ref="sonyHead"-->
+    <!--p:leg-ref="sonyLeg"-->
+
+    <!--<bean id="t1001" class="spring.video.tutorial.impls.robot.ModelT1000"-->
+          <!--p:hand-ref="sonyHand"-->
+          <!--p:head-ref="sonyHead"-->
+          <!--p:leg-ref="sonyLeg"-->
+          <!--c:colour="silver"-->
+          <!--c:year="1995"-->
+          <!--c:soundEnabled="true"-->
+          <!--init-method="init"-->
+          <!--destroy-method="destroy"-->
+          <!--lazy-init="true"/>-->
+
+
+
+
+
+
+    <!--c:colour="silver"-->
+    <!--c:year="1995"-->
+    <!--c:soundEnabled="true"-->
+    <!--<constructor-arg  ref="sonyLeg"/>-->
+
+
+    <!--<constructor-arg  ref="sonyHand"/>-->
+
+    <!--<constructor-arg  ref="sonyHead"/>-->
+
+    <!--<property name="head" ref="sonyHead"/>-->
+    <!--<property name="hand" ref="sonyHand"/>-->
+    <!--<property name="leg" ref="sonyLeg"/>-->
+</beans>
