@@ -12,15 +12,16 @@
        default-init-method="init"
        default-destroy-method="destroy">
 
-    <import resource="t1000_context.xml"/>
-    <import resource="toshiba.context.xml"/>
-    <import resource="sony.context.xml"/>
+    <!--<import resource="t1000_context.xml"/>-->
+    <!--<import resource="toshiba.context.xml"/>-->
+    <!--<import resource="sony.context.xml"/>-->
     <context:annotation-config/>
+    <context:component-scan base-package="spring"/>
 
 
-    <bean id="t1000" class="spring.video.tutorial.impls.robot.ModelT1000"
-          scope="prototype">
-    </bean>
+    <!--<bean id="t1000" class="spring.video.tutorial.impls.robot.ModelT1000"-->
+          <!--scope="prototype">-->
+    <!--</bean>-->
 
 
 

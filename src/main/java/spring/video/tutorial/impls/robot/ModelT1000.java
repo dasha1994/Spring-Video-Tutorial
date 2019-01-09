@@ -5,17 +5,25 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import spring.video.tutorial.interfaces.*;
-
+@Component
 public class ModelT1000 extends Model implements InitializingBean,DisposableBean {
 	@Autowired(required = false)
 	@Qualifier("toshibaHand")
 	private Hand hand;
+
+	//@Autowired
 	private Leg leg;
 	private Head head;
 
-	public String getColour() {
-		return colour;
+	@Bean
+	@Scope(value= ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public ModelT1000 modedl1(){
+		return new ModelT1000();
 	}
 
 	public ModelT1000(String colour, int year, boolean soundEnabled) {
@@ -27,7 +35,6 @@ public class ModelT1000 extends Model implements InitializingBean,DisposableBean
 
 	public ModelT1000(Hand hand, Leg leg, Head head) {
 		System.out.println("only ref");
-
 		this.hand = hand;
 		this.leg = leg;
 		this.head = head;
@@ -56,6 +63,10 @@ public class ModelT1000 extends Model implements InitializingBean,DisposableBean
 
 	public void setColour(String colour) {
 		this.colour = colour;
+	}
+
+	public String getColour() {
+		return colour;
 	}
 
 	public int getYear() {
