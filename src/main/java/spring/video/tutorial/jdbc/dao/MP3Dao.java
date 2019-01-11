@@ -1,4 +1,6 @@
-package spring.video.tutorial.jdbc;
+package spring.video.tutorial.jdbc.dao;
+
+import spring.video.tutorial.jdbc.MP3;
 
 import java.util.List;
 

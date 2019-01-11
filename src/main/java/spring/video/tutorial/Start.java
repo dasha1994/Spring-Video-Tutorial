@@ -10,6 +10,8 @@ import spring.video.tutorial.impls.toshiba.ToshibaHand;
 import spring.video.tutorial.interfaces.Hand;
 import spring.video.tutorial.interfaces.Robot;
 import spring.video.tutorial.interfaces.RobotConveyor;
+import spring.video.tutorial.jdbc.MP3;
+import spring.video.tutorial.jdbc.impls.H2Dao;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +22,7 @@ public class Start {
 	static ApplicationContext context = new ClassPathXmlApplicationContext("application.context.xml");
 
 	public static void main(String[] args) {
-		ModelT1000 t1000 = (ModelT1000) context.getBean("model1");
+		jdbc();
 	}
 	private static void baseExample(){
 		ModelT1000 t1000 = (ModelT1000) context.getBean("t1000");
@@ -28,6 +30,13 @@ public class Start {
 		//t1000.action();
 		t1000.getHand().catchSomething();
 		System.out.println("");
+	}
+	private static void jdbc(){
+		MP3 mp3 = new MP3();
+		mp3.setName("So long");
+		mp3.setAuthor("Malfa");
+		H2Dao h2Dao = (H2Dao) context.getBean("H2Dao");
+		h2Dao.insert(mp3);
 	}
 	private static void robotsPool(){
 		T1000Pool t1000Pool = (T1000Pool) context.getBean("t1000pool");
